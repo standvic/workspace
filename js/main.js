@@ -14,6 +14,14 @@ function Hub(params) {
     this.backgroundColor = params.backgroundColor || 'white';
     this.color = params.color || 'black';
 
+    this.create = function()  {
+        var bodyElem = window.body;
+    };
+
+};
+
+function Procreator() {
+
 };
 
 function Block(params) {

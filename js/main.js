@@ -11,13 +11,12 @@ function App() {
 function Hub(params) {
     this.border = true;
     this.width = params.width || '500px';
-    console.log(this.width);
     this.height = params.height || '500px';
     this.backgroundColor = params.backgroundColor || 'white';
     this.color = params.color || 'black';
 
     this.create = function()  {
-        var bodyElem = window.body;
+        var bodyElem = $('body');
         console.log(bodyElem);
     };
 

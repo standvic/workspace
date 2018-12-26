@@ -1,6 +1,6 @@
 // main module (classes)
 
-function App (hub, engine) {
+function App(hub, engine) {
     this.init = function () {
         hub.create();
         engine.start();
@@ -8,5 +8,14 @@ function App (hub, engine) {
 };
 
 function Hub(params) {
+    this.border = true;
+    this.width = params.width || '500px';
+    this.height = params.height || '500px';
+    this.backgroundColor = params.backgroundColor || 'white';
+    this.color = params.color || 'black';
 
 };
+
+function Block(params) {
+
+}

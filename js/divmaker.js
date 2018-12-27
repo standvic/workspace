@@ -16,8 +16,8 @@ function Hub(params) {
     this.color = params.color || 'black';
 
     this.create = function()  {
-        var bodyElem = $('body');
-        console.log(bodyElem);
+        var bodyElem = document.body;
+
     };
 
 };
@@ -26,6 +26,6 @@ function Divmaker() {
 
 };
 
-function Block(params) {
+function Div(params) {
 
 }

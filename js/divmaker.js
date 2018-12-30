@@ -8,13 +8,10 @@ function App() {
     };
 };
 
-function Hub(params) {
-    this.width = params.width || '500px';
-    this.height = params.height || '500px';
-    this.backgroundColor = params.backgroundColor || 'white';
-    this.borderColor = params.borderColor || 'black';
-    this.borderWidth = params.borderWidth || '1px 1px 1px 1px';
-    this.color = params.color || 'black';
+function Hub(width, height, backgroundColor) {
+    this.width = width || '800px';
+    this.height = height || '500px';
+    this.backgroundColor = backgroundColor || 'white';
 
     this.create = function()  {
         var bodyElem = document.body,
@@ -24,22 +21,19 @@ function Hub(params) {
         mainDiv.appendChild(hubDiv);
         hubDiv.classList.add('hub');
 
-        hubDiv.style.backgroundColor = this.backgroundColor;
         hubDiv.style.width = this.width;
         hubDiv.style.height = this.height;
-        hubDiv.style.borderColor = this.borderColor;
-        hubDiv.style.color = this.color;
-        hubDiv.style.borderWidth = this.borderWidth;
+        hubDiv.style.backgroundColor = this.backgroundColor;
 
-        console.log(hubDiv.style.borderWidth );
+        //console.log(hubDiv);
     };
 
 };
 
-function Divmaker() {
+function Blockmaker() {
 
 };
 
-function Div(params) {
+function Block(params) {
 
 }

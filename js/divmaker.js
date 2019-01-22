@@ -8,10 +8,12 @@ function App() {
     };
 };
 
-function Hub(width, height, backgroundColor) {
-    this.width = width || '800px';
-    this.height = height || '500px';
-    this.backgroundColor = backgroundColor || 'white';
+function Hub(params) {
+    if (params) {
+        this.width = params.width;
+        this.height = params.height;
+        this.backgroundColor = params.backgroundColor;
+    };
 
     this.create = function()  {
         var bodyElem = document.body,
@@ -21,19 +23,25 @@ function Hub(width, height, backgroundColor) {
         mainDiv.appendChild(hubDiv);
         hubDiv.classList.add('hub');
 
-        hubDiv.style.width = this.width;
-        hubDiv.style.height = this.height;
-        hubDiv.style.backgroundColor = this.backgroundColor;
-
-        //console.log(hubDiv);
+        hubDiv.style.width = hubDiv.style.width || this.width;
+        hubDiv.style.height = hubDiv.style.height || this.height;
+        hubDiv.style.backgroundColor = hubDiv.style.backgroundColor || this.backgroundColor;
     };
 
 };
 
-function Blockmaker() {
+function Divmaker() {
+    this.create = function()  {
+        var bodyElem = document.body,
+            mainDiv = bodyElem.querySelector('.main'),
+            divmaker = document.createElement('div');
+
+        mainDiv.appendChild(divmaker);
+        divmaker.classList.add('divmaker');
+    };
 
 };
 
-function Block(params) {
+function Div(params) {
 
 }

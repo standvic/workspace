@@ -9,12 +9,11 @@ function App() {
 };
 
 function Hub(params) {
-    this.width = params.width || '500px';
-    this.height = params.height || '500px';
-    this.backgroundColor = params.backgroundColor || 'white';
-    this.borderColor = params.borderColor || 'black';
-    this.borderWidth = params.borderWidth || '1px 1px 1px 1px';
-    this.color = params.color || 'black';
+    if (params) {
+        this.width = params.width;
+        this.height = params.height;
+        this.backgroundColor = params.backgroundColor;
+    };
 
     this.create = function()  {
         var bodyElem = document.body,
@@ -24,19 +23,22 @@ function Hub(params) {
         mainDiv.appendChild(hubDiv);
         hubDiv.classList.add('hub');
 
-        hubDiv.style.backgroundColor = this.backgroundColor;
-        hubDiv.style.width = this.width;
-        hubDiv.style.height = this.height;
-        hubDiv.style.borderColor = this.borderColor;
-        hubDiv.style.color = this.color;
-        hubDiv.style.borderWidth = this.borderWidth;
-
-        console.log(hubDiv.style.borderWidth );
+        hubDiv.style.width = hubDiv.style.width || this.width;
+        hubDiv.style.height = hubDiv.style.height || this.height;
+        hubDiv.style.backgroundColor = hubDiv.style.backgroundColor || this.backgroundColor;
     };
 
 };
 
 function Divmaker() {
+    this.create = function()  {
+        var bodyElem = document.body,
+            mainDiv = bodyElem.querySelector('.main'),
+            divmaker = document.createElement('div');
+
+        mainDiv.appendChild(divmaker);
+        divmaker.classList.add('divmaker');
+    };
 
 };
 

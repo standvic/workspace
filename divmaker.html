@@ -11,6 +11,7 @@
     <title>DivMaker Page</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/divmaker.css">
 </head>
 
 <body>
@@ -38,8 +39,12 @@
 <script type="text/javascript">
     //var app = new App();
     //app.init();
-    var hub = new Hub({backgroundColor: '#b9dfbc'});
+    var hub = new Hub();
+    var divMaker = new Divmaker();
+
     hub.create();
+    divMaker.create();
+
 </script>
 
 </body>

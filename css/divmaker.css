@@ -1,16 +1,18 @@
 .hub {
-    width: 1200px;
-    height: 500px;
+    width: 800px;
+    height: 600px;
+    float: left;
     background-color: #d9fff8;
     border: black solid 1px;
     color: black;
 }
 
 .divmaker {
-    width: 800px;
-    height: 400px;
-    display: inline-block;
-    margin-top: 20px;
+    width: 200px;
+    height: 600px;
+    float: left;
+    /*display: inline-block;*/
+    margin-left: 20px;
     background-color: #fcffec;
     color: black;
 }

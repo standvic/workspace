@@ -17,23 +17,26 @@ function Hub(params) {
 
     this.create = function()  {
         var bodyElem = document.body,
-            mainDiv = bodyElem.querySelector('.main'),
+            mainDiv = bodyElem.querySelector('.main') || bodyElem.querySelector('div'),
             hubDiv = document.createElement('div');
 
         mainDiv.appendChild(hubDiv);
         hubDiv.classList.add('hub');
 
-        hubDiv.style.width = hubDiv.style.width || this.width;
-        hubDiv.style.height = hubDiv.style.height || this.height;
-        hubDiv.style.backgroundColor = hubDiv.style.backgroundColor || this.backgroundColor;
+        hubDiv.style.width = hubDiv.style.width || this.width || '800px';
+        hubDiv.style.height = hubDiv.style.height || this.height || '600px';
+        hubDiv.style.backgroundColor = hubDiv.style.backgroundColor || this.backgroundColor || '#d9fff8';
     };
 
+    this.changeBackGroundColor = function(bgColor) {
+        hubDiv.style.backgroundColor = bgColor;
+    }
 };
 
 function Divmaker() {
     this.create = function()  {
         var bodyElem = document.body,
-            mainDiv = bodyElem.querySelector('.main'),
+            mainDiv = bodyElem.querySelector('.main') || bodyElem.querySelector('div'),
             divmaker = document.createElement('div');
 
         mainDiv.appendChild(divmaker);

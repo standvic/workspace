@@ -4,15 +4,12 @@
     float: left;
     background-color: #d9fff8;
     border: black solid 1px;
-    color: black;
 }
 
 .divmaker {
     width: 200px;
     height: 600px;
     float: left;
-    /*display: inline-block;*/
     margin-left: 20px;
-    background-color: #fcffec;
-    color: black;
+    background-color: #ebfff0;
 }

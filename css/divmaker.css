@@ -1,8 +1,8 @@
 .hub {
-    width: 800px;
-    height: 600px;
+    width: 100%;
+    height: 100%;
     float: left;
-    background-color: #d9fff8;
+    background-color: #ebfff0;
     border: black solid 1px;
 }
 

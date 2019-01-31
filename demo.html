@@ -45,10 +45,12 @@
         post2 = new Post();
 
     hub.create();
-    post.buildPost();
-    post2.buildPost();
-    hub.putElement(post.getContainer());
-    hub.putElement(post2.getContainer());
+
+    post.build().stylize().classify();
+    post2.build().stylize().classify();
+
+    hub.putElement(post.getElement());
+    hub.putElement(post2.getElement());
 
 
 </script>

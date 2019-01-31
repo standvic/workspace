@@ -1,4 +1,3 @@
-// main module (classes)
 
 function App() {
     this.hub = new Hub();
@@ -47,7 +46,6 @@ function Hub(params) {
             hubDiv.appendChild(element);
         } else {
             console.log('Object is not the Element instance!');
-            //console.log(element);
         };
     };
 };
@@ -69,8 +67,13 @@ function Post(options) {
                'Vestibulum vel felis volutpat, consequat lorem id, tristique purus. ' +
                'Sed vel est accumsan, bibendum dolor et, convallis arcu. ',
         nickName = 'Guest',
-        pubDate = new Date(),
-        container = document.createElement('div');
+        pubDate = new Date().toLocaleString('ru'),
+        container = document.createElement('div'),
+        avatarElement = document.createElement('img'),
+        headElement = document.createElement('div'),
+        nicknameElement = document.createElement('span'),
+        pubDateElement = document.createElement('span'),
+        textElement = document.createElement('div');
 
     if (options) {
          nickName = options.nicknName || nickName;
@@ -79,20 +82,16 @@ function Post(options) {
          pubDate = options.pubDate || pubDate;
     };
 
-    this.buildPost = function() {
-
-        var avatarElement = document.createElement('img'),
-            headElement = document.createElement('div'),
-            nicknameElement = document.createElement('span'),
-            pubDateElement = document.createElement('span'),
-            textElement = document.createElement('div');
+    this.build = function() {
 
         avatarElement.setAttribute('src', avatarSrc);
-        nicknameElement.classList.add('badge', 'badge-pill', 'badge-light');
+
         nicknameElement.innerHTML = nickName;
         nicknameElement.innerHTML = nicknameElement.innerHTML;
+
         textElement.innerHTML = text;
-        pubDateElement.innerHTML = '&#8226' + pubDate;
+
+        pubDateElement.innerHTML = '&nbsp;&#8226&nbsp;' + pubDate;
 
         headElement.appendChild(nicknameElement);
         headElement.appendChild(pubDateElement);
@@ -100,10 +99,33 @@ function Post(options) {
         container.appendChild(avatarElement);
         container.appendChild(headElement);
         container.appendChild(textElement);
+
+        return this;
+
     };
 
+    this.stylize = function() {
 
-    this.getContainer = function() {
+        avatarElement.style.float = 'left';
+        avatarElement.style.margin = '5px 5px 5px 5px';
+        textElement.style.margin = '5px 5px 5px 5px';
+        container.style.padding = '10px 10px 10px 10px ';
+
+        return this;
+    };
+
+    this.classify = function () {
+
+        container.classList.add('post-container');
+        headElement.classList.add('post-header');
+        nicknameElement.classList.add('badge', 'badge-pill', 'badge-light');
+        avatarElement.classList.add('post-avatar');
+        textElement.classList.add('post-text');
+
+        return this;
+    };
+
+    this.getElement = function() {
         return container;
     }
 

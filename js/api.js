@@ -1,18 +1,22 @@
 
-function App() {
-    this.hub = new Hub();
-    this.init = function () {
-        this.hub.create();
-        //engine.start();
-    };
-};
+/**
+ * Represents a container for the elements.
+ * @constructor
+ * @param {object} params - The parameters of the hub.
+ */
+function Container(params) {
 
+    var baseDiv = document.createElement('div');
 
-function Hub(params) {
-
-    var hubDiv = document.createElement('div');
-
+    /**
+     * Width of hub 'div' element
+     * @type {string}
+     */
     this.WIDTH = '100%';
+    /**
+     * Height of hub 'div' element
+     * @type {string}
+     */
     this.HEIGHT = '100%';
 
     if (params) {
@@ -21,36 +25,63 @@ function Hub(params) {
         this.backgroundColor = params.backgroundColor;
     };
 
+    /**
+     * Applies parameters to Container element and renders it in page.
+     */
     this.create = function()  {
         var bodyElem = document.body,
             mainDiv = bodyElem.querySelector('.main') || bodyElem.querySelector('div');
 
 
-        mainDiv.appendChild(hubDiv);
-        hubDiv.classList.add('hub');
+        mainDiv.appendChild(baseDiv);
+        baseDiv.classList.add('container');
 
-        hubDiv.style.width = hubDiv.style.width || this.width || this.WIDTH;
-        hubDiv.style.height = hubDiv.style.height || this.height || this.HEIGHT;
-        hubDiv.style.backgroundColor = hubDiv.style.backgroundColor || this.backgroundColor || '#ebfff0';
-        hubDiv.style.float =  hubDiv.style.float || 'left';
-        hubDiv.style.border = hubDiv.style.border || 'black solid 1px';
+        baseDiv.style.width = baseDiv.style.width || this.width || this.WIDTH;
+        baseDiv.style.height = baseDiv.style.height || this.height || this.HEIGHT;
+        baseDiv.style.backgroundColor = baseDiv.style.backgroundColor || this.backgroundColor || '#ebfff0';
+        baseDiv.style.float =  baseDiv.style.float || 'left';
+        baseDiv.style.border = baseDiv.style.border || 'black solid 1px';
 
     };
 
+    /**
+     * Changes hub background color
+     * @param {string} bgColor
+     */
     this.changeBackGroundColor = function(bgColor) {
         this.hubDiv.style.backgroundColor = bgColor;
     };
 
-    this.putElement = function(element) {
-        if (element instanceof Element) {
-            hubDiv.appendChild(element);
-        } else {
-            console.log('Object is not the Element instance!');
-        };
+    /**
+     * Appends element into container
+     * @param {Element} element
+     */
+    this.appendElements = function(elements) {
+        elements.forEach(function(item) {
+            if (item instanceof Element) {
+                baseDiv.appendChild(item);
+            } else {
+                console.log('Object is not the Element instance!');
+            };
+        });
+
     };
+
+    /**
+     * Returns post Element instance
+     * @return {Element}
+     */
+    this.getElement = function() {
+        return baseDiv;
+    }
 };
 
 
+/**
+ * Represents a post
+ * @constructor
+ * @param {object} options - The parameters of the new post.
+ */
 function Post(options) {
 
     var avatarSrc = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAABcCAMAAADUMSJqAAAABGdBTUEAALGPC/xhBQ' +
@@ -67,10 +98,10 @@ function Post(options) {
                'Vestibulum vel felis volutpat, consequat lorem id, tristique purus. ' +
                'Sed vel est accumsan, bibendum dolor et, convallis arcu. ',
         nickName = 'Guest',
-        pubDate = new Date().toLocaleString('ru'),
-        container = document.createElement('div'),
+        pubDate = new Date(),
+        container = new Container(),
         avatarElement = document.createElement('img'),
-        headElement = document.createElement('div'),
+        headElement = new Container(),
         nicknameElement = document.createElement('span'),
         pubDateElement = document.createElement('span'),
         textElement = document.createElement('div');
@@ -82,52 +113,75 @@ function Post(options) {
          pubDate = options.pubDate || pubDate;
     };
 
+    /**
+     * Builds part of DOM tree for the new post
+     * @return {Post}
+     */
     this.build = function() {
 
         avatarElement.setAttribute('src', avatarSrc);
-
         nicknameElement.innerHTML = nickName;
         nicknameElement.innerHTML = nicknameElement.innerHTML;
-
         textElement.innerHTML = text;
+        pubDateElement.innerHTML = '&nbsp;&#8226&nbsp;' + ' Submitted on ' + pubDate.toLocaleDateString('ru') +
+                                   ' at '+ pubDate.toLocaleTimeString('ru');
 
-        pubDateElement.innerHTML = '&nbsp;&#8226&nbsp;' + pubDate;
-
-        headElement.appendChild(nicknameElement);
-        headElement.appendChild(pubDateElement);
-
-        container.appendChild(avatarElement);
-        container.appendChild(headElement);
-        container.appendChild(textElement);
+        headElement.appendElements([nicknameElement, pubDateElement]);
+        container.appendElements([avatarElement, headElement.getElement(), textElement]);
 
         return this;
-
     };
 
+    /**
+     * Set styles for inner post elements
+     * @return {Post}
+     */
     this.stylize = function() {
 
         avatarElement.style.float = 'left';
         avatarElement.style.margin = '5px 5px 5px 5px';
         textElement.style.margin = '5px 5px 5px 5px';
-        container.style.padding = '10px 10px 10px 10px ';
 
         return this;
     };
 
+    /**
+     * Sets classes to inner post elements
+     * @return {Post}
+     */
     this.classify = function () {
 
-        container.classList.add('post-container');
-        headElement.classList.add('post-header');
-        nicknameElement.classList.add('badge', 'badge-pill', 'badge-light');
         avatarElement.classList.add('post-avatar');
+        nicknameElement.classList.add('badge', 'badge-pill', 'badge-light');
+        pubDateElement.classList.add('post-pubdate');
         textElement.classList.add('post-text');
 
         return this;
     };
 
-    this.getElement = function() {
-        return container;
-    }
-
+    /**
+     * Returns post Element instance
+     * @return {Element}
+     */
+    this.getPostElement = function() {
+        return container.getElement();
+    };
 };
 
+
+/**
+ * Make post and send it
+ * @constructor
+ *
+ */
+function PostMaker() {
+    var container = document.createElement('form'),
+        posts = document.createElement('div'),
+        textField = document.createElement('textarea'),
+        textFieldLabel = document.createElement('p'),
+        nameField = document.createElement('input'),
+        nameFieldLabel = document.createElement('p'),
+        submitButton = document.createElement('submit'),
+        postsArray = [];
+
+}

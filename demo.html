@@ -37,10 +37,8 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>-->
 <script src="js/api.js"></script>
 <script type="text/javascript">
-    //var app = new App();
-    //app.init();
 
-    var hub = new Hub(),
+    var hub = new Container(),
         post = new Post(),
         post2 = new Post();
 
@@ -49,9 +47,7 @@
     post.build().stylize().classify();
     post2.build().stylize().classify();
 
-    hub.putElement(post.getElement());
-    hub.putElement(post2.getElement());
-
+    hub.appendElements([post.getPostElement(), post2.getPostElement()]);
 
 </script>
 

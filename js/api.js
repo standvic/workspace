@@ -9,12 +9,12 @@ function Container(params) {
     var baseDiv = document.createElement('div');
 
     /**
-     * Width of hub 'div' element
+     * Width of container 'div' element
      * @type {string}
      */
     this.WIDTH = '100%';
     /**
-     * Height of hub 'div' element
+     * Height of container 'div' element
      * @type {string}
      */
     this.HEIGHT = '100%';
@@ -26,7 +26,7 @@ function Container(params) {
     };
 
     /**
-     * Applies parameters to Container element and renders it in page.
+     * Applies parameters to container element and renders it in page.
      */
     this.create = function()  {
         var bodyElem = document.body,
@@ -45,7 +45,7 @@ function Container(params) {
     };
 
     /**
-     * Changes hub background color
+     * Changes container background color
      * @param {string} bgColor
      */
     this.changeBackGroundColor = function(bgColor) {
@@ -140,6 +140,8 @@ function Post(options) {
 
         avatarElement.style.float = 'left';
         avatarElement.style.margin = '5px 5px 5px 5px';
+        avatarElement.style.width = '64px';
+        avatarElement.style.height = '64px';
         textElement.style.margin = '5px 5px 5px 5px';
 
         return this;

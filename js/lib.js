@@ -6,7 +6,7 @@
  */
 function Container(params) {
 
-    var baseDiv = document.createElement('div');
+    var containerDiv = document.createElement('div');
 
     /**
      * Width of container 'div' element
@@ -28,19 +28,19 @@ function Container(params) {
     /**
      * Applies parameters to container element and renders it in page.
      */
-    this.create = function()  {
+    this.render = function()  {
         var bodyElem = document.body,
-            mainDiv = bodyElem.querySelector('.main') || bodyElem.querySelector('div');
+            parentDiv = bodyElem.querySelector('.main') || bodyElem.querySelector('div');
 
 
-        mainDiv.appendChild(baseDiv);
-        baseDiv.classList.add('container');
+        parentDiv.appendChild(containerDiv);
+        containerDiv.classList.add('container');
 
-        baseDiv.style.width = baseDiv.style.width || this.width || this.WIDTH;
-        baseDiv.style.height = baseDiv.style.height || this.height || this.HEIGHT;
-        baseDiv.style.backgroundColor = baseDiv.style.backgroundColor || this.backgroundColor || '#ebfff0';
-        baseDiv.style.float =  baseDiv.style.float || 'left';
-        baseDiv.style.border = baseDiv.style.border || 'black solid 1px';
+        containerDiv.style.width = containerDiv.style.width || this.width || this.WIDTH;
+        containerDiv.style.height = containerDiv.style.height || this.height || this.HEIGHT;
+        containerDiv.style.backgroundColor = containerDiv.style.backgroundColor || this.backgroundColor || '#ebfff0';
+        containerDiv.style.float =  containerDiv.style.float || 'left';
+        containerDiv.style.border = containerDiv.style.border || 'black solid 1px';
 
     };
 
@@ -49,7 +49,7 @@ function Container(params) {
      * @param {string} bgColor
      */
     this.changeBackGroundColor = function(bgColor) {
-        this.hubDiv.style.backgroundColor = bgColor;
+        containerDiv.style.backgroundColor = bgColor;
     };
 
     /**
@@ -59,7 +59,7 @@ function Container(params) {
     this.appendElements = function(elements) {
         elements.forEach(function(item) {
             if (item instanceof Element) {
-                baseDiv.appendChild(item);
+                containerDiv.appendChild(item);
             } else {
                 console.log('Object is not the Element instance!');
             };
@@ -72,7 +72,7 @@ function Container(params) {
      * @return {Element}
      */
     this.getElement = function() {
-        return baseDiv;
+        return containerDiv;
     }
 };
 

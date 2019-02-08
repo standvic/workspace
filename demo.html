@@ -22,8 +22,8 @@
     <div class="row">
         <!--img src="https://img.icons8.com/ios/50/000000/javascript.png" border="0" alt="Image and video hosting by TinyPic"-->
         <div class="col-lg-12 text-center">
-            <h1 class="mt-5">Classes</h1>
-            <p class="lead">Simple classes demo</p>
+            <h1 class="mt-5">ClassLib</h1>
+            <p class="lead">Simple classes lib</p>
         </div>
     </div>
 </div>
@@ -32,22 +32,26 @@
     &copy standvic 2018
 </div>
 
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>-->
+
 <script src="js/lib.js"></script>
 <script type="text/javascript">
 
     var hub = new Container(),
-        post = new Post(),
-        post2 = new Post();
+        post = new Message(),
+        post2 = new Message(),
+        post3 = new EditableMessage(),
+        clicker = new ClickableContainer({height: '100px'});
 
     hub.render();
+    clicker.render();
 
     post.build().stylize().classify();
     post2.build().stylize().classify();
+    post3.build().stylize().classify();
 
-    hub.appendElements([post.getPostElement(), post2.getPostElement()]);
+    hub.appendElements([post.getPostElement(), post2.getPostElement(), post3.getPostElement()]);
+
+
 
 </script>
 

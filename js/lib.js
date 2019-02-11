@@ -108,7 +108,8 @@
          */
         ClickableContainer.prototype.clickListener = function (event) {
             var colour = '#' + Math.round(Math.random()*1000000).toString();
-            this._containerDiv.style.backgroundColor = colour;
+            //this._containerDiv.style.backgroundColor = colour;
+            this.changeBackGroundColor(colour);
         }
 
     /**

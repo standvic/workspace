@@ -234,7 +234,7 @@
      */
     function EditableMessage(options) {
         Message.apply(this, arguments);
-        this._container = new ClickableContainer({clickListener: function(){ this._textElement.innerHTML = prompt()}.bind(this)});
+        this._container = new ClickableContainer({clickListener: function(){ this._textElement.innerHTML = prompt('Change the text')}.bind(this)});
     }
 
     EditableMessage.prototype = Object.create(Message.prototype);

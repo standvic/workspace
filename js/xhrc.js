@@ -57,13 +57,11 @@ XHRC.RESTClient.prototype = {
  */
     sendGET: function(url, requestParams, userName, password) {
         var _url,
-            params,
-            paramsSize = Object.keys(requestParams).length,
+            params = '',
             _xhro = this._xhrObject;
 
-        if (paramsSize) {
-            var counter = 0,
-                paramList = [];
+        if (requestParams && Object.keys(requestParams).length) {
+            var paramList = [];
             for (var i in requestParams) {
                 paramList.push(i + '=' + requestParams[i]);
             };

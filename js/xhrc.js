@@ -50,4 +50,37 @@ XHRC.RESTClient.prototype = {
     },
 
 
+/**
+ * Sends GET request
+ *
+ */
+    sendGET: function(url, requestParams, userName, password) {
+        var _url,
+            params,
+            paramsSize = Object.keys(requestParams).length,
+            _xhro = this._xhrObject;
+
+        if (paramsSize) {
+            var counter = 0,
+                array = ['?'];
+            for (var i in requestParams) {
+                array.push(i + '=' + requestParams[i]);
+                params = array.join('&');
+            };
+        };
+
+        _url = url + params;
+
+        return new Promise(function (resolve, reject) {
+            _xhro.open('GET', _url, true);
+            _xhro.onreadystatechange = function() {
+                if (_xhro.readyState == 4) {
+                    if(_xhro.status == 200) {
+                        console.log(_xhro.responseText);
+                    }
+                }
+            };
+            _xhro.send(null);
+        });
+    }
 }

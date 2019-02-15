@@ -52,6 +52,7 @@ XHRC.RESTClient.prototype = {
 
 /**
  * Sends GET request
+ * @return {Promise}
  *
  */
     sendGET: function(url, requestParams, userName, password) {

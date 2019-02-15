@@ -62,11 +62,11 @@ XHRC.RESTClient.prototype = {
 
         if (paramsSize) {
             var counter = 0,
-                array = ['?'];
+                paramList = [];
             for (var i in requestParams) {
-                array.push(i + '=' + requestParams[i]);
-                params = array.join('&');
+                paramList.push(i + '=' + requestParams[i]);
             };
+            params = '?' + paramList.join('&');
         };
 
         _url = url + params;

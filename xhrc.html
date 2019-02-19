@@ -65,7 +65,19 @@
                 console.log('Error ' + error.code);
             }
         );*/
-    xhr.sendGET('http://api.linkpreview.net/?key=5c6bfa58e4f523d3621cee6f49e93a34f3f0f654ab41a&q=https://contextual.websearch.com')
+/*
+    xhr.sendGET('http://www.omdbapi.com', {apikey: '4db870dc', type: "movie", y: 2018, s:'amber'})
+        .then(
+            function(result) {
+                console.log(result);
+            },
+            function(error) {
+                console.log('Error ' + error.code);
+            }
+        );
+*/
+
+    xhr.sendGET('https://api.themoviedb.org/3/movie/550', {api_key: '900a059c721165f24d2eea4b58490e05'})
         .then(
             function(result) {
                 console.log(result);

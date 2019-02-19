@@ -18,9 +18,10 @@ XHRC.RESTClient = function(params) {
      * @private
      */
     this._xhrObject = this._getXHR();
+    this.httpCode = Math.trunc((this._xhrObject.status) % 100);
 
     return this;
-}
+};
 
 
 XHRC.RESTClient.prototype = {
@@ -48,23 +49,6 @@ XHRC.RESTClient.prototype = {
         };
 
         return xhr;
-    },
-
-/**
- * Callback for XMLHttpRequest object property onreadystatechange
- * @private
- */
-    _onReadyStateChangeHandler: function() {
-        if (_xhro.readyState == 4) {
-            var httpCode = Math.trunc((_xhro.status) % 100);
-            if( httpCode === 1 || httpCode === 2 || httpCode === 3) {
-                resolve(_xhro.responseText);
-            } else {
-                var error = new Error(_xhro.statusText);
-                error.code = _xhro.status;
-                reject(error);
-            };
-        };
     },
 
 
@@ -95,7 +79,18 @@ XHRC.RESTClient.prototype = {
         return new Promise(function (resolve, reject) {
             _xhro.open('GET', _url, true);
 
-            _xhro.onreadystatechange = this._onReadyStateChangeHandler;
+            _xhro.onreadystatechange = function() {
+                if (_xhro.readyState == 4) {
+                    var httpCode = Math.trunc((_xhro.status) / 100);
+                    if( httpCode === 1 || httpCode === 2 || httpCode === 3) {
+                        resolve(_xhro.responseText);
+                    } else {
+                        var error = new Error(_xhro.statusText);
+                        error.code = _xhro.status;
+                        reject(error);
+                    };
+                };
+            };
             _xhro.send(null);
         });
     },
@@ -113,6 +108,7 @@ XHRC.RESTClient.prototype = {
     sendPOST: function(url, requestParams, userName, password) {
         var _url,
             params = '',
+            self = this,
             _xhro = this._xhrObject;
 
         if (requestParams && Object.keys(requestParams).length) {
@@ -129,7 +125,18 @@ XHRC.RESTClient.prototype = {
             _xhro.open('POST', _url, true);
             _xhro.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-            _xhro.onreadystatechange = this._onReadyStateChangeHandler;
+            _xhro.onreadystatechange = function() {
+                if (_xhro.readyState == 4) {
+                    var httpCode = Math.trunc((_xhro.status) % 100);
+                    if( httpCode === 1 || httpCode === 2 || httpCode === 3) {
+                        resolve(_xhro.responseText);
+                    } else {
+                        var error = new Error(_xhro.statusText);
+                        error.code = _xhro.status;
+                        reject(error);
+                    };
+                };
+            };
             _xhro.send(params);
         });
     }

@@ -31,3 +31,24 @@
 <div style="position: absolute; bottom: 50px">
     &copy standvic 2018
 </div>
+
+<script src="js/xhrc.js"></script>
+<script type="text/javascript">
+
+    var xhr = new XHRC.RESTClient();
+    xhr.sendGET('http://coub.com/oauth/signin',{esponse_type: 'code', client_id: 'bfea9c888149ef59e1c1dcc9e03841f790191089a18cfe759137fab8131d02e0',
+                                                    redirect_uri: 'https://standvic.github.io/workspace/restapi.html'})
+        .then(
+            function(result) {
+                console.log(result);
+            },
+            function(error) {
+                console.log('Error ' + error.code);
+            }
+        );
+
+</script>
+
+</body>
+
+</html>

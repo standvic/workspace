@@ -77,9 +77,9 @@
         );
 */
 
-    xhr.sendGET('https://api.themoviedb.org/3/movie/550', {api_key: '900a059c721165f24d2eea4b58490e05'})
+    xhr.sendGET('https://api.themoviedb.org/3/search/movie', {api_key: '900a059c721165f24d2eea4b58490e05', query:/w+/, year:2018, page: 1})
         .then(
-            function(result) {
+            function(result) {o
                 console.log(result);
             },
             function(error) {

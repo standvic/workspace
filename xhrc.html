@@ -65,8 +65,7 @@
                 console.log('Error ' + error.code);
             }
         );*/
-/*
-    xhr.sendGET('http://www.omdbapi.com', {apikey: '4db870dc', type: "movie", y: 2018, s:'amber'})
+    xhr.sendGET('https://api.themoviedb.org/3/discover/movie', {api_key: '900a059c721165f24d2eea4b58490e05', primary_release_year: "2018", sort_by: 'vote_average.desc'})
         .then(
             function(result) {
                 console.log(result);
@@ -75,9 +74,8 @@
                 console.log('Error ' + error.code);
             }
         );
-*/
 
-    xhr.sendGET('https://api.themoviedb.org/3/search/movie', {api_key: '900a059c721165f24d2eea4b58490e05', query:/w+/, year:2018, page: 1})
+    /*xhr.sendGET('https://api.themoviedb.org/3/search/movie', {api_key: '900a059c721165f24d2eea4b58490e05', query:/w+/, year:2018, page: 1})
         .then(
             function(result) {o
                 console.log(result);
@@ -85,7 +83,7 @@
             function(error) {
                 console.log('Error ' + error.code);
             }
-        );
+        );*/
 
 </script>
 

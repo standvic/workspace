@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>The demo page</title>
+    <title>Http client test</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="css/divmaker.css">
@@ -16,9 +16,37 @@
 
 <body>
 
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <img src="https://img.icons8.com/office/48/000000/js.png" border="0">
+            Frontend workspace
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="simplelib.html">SimpleLib</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="xhrc.html">XHRC</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <!-- Page Content -->
 <div class="container main">
-    <a href="index.html"> &DoubleLongLeftArrow; Home </a>
     <div class="row">
         <!--img src="https://img.icons8.com/ios/50/000000/javascript.png" border="0" alt="Image and video hosting by TinyPic"-->
         <div class="col-lg-12 text-center">
@@ -26,17 +54,20 @@
             <p class="lead">XHRC demo page</p>
         </div>
     </div>
+
+    <textarea id="request-result" style="width: 100%; height: 800px"></textarea>
 </div>
 
-<div style="position: absolute; bottom: 50px">
-    &copy standvic 2018
+<div style="position: absolute; bottom: 50px; left: 50px">
+    &copy standvic 2019
 </div>
 
 
 <script src="src/xhrc.js"></script>
 <script type="text/javascript">
 
-    var xhr = new XHRC.RESTClient();
+    var xhr = new XHRC.RESTClient(),
+        output = document.querySelector("#request-result");
 
 /*    xhr.sendGET('https://jsonplaceholder.typicode.com/todos/1', {a:1, b:2, c:'234', d:true, e:'qwerty'})
         .then(
@@ -68,10 +99,10 @@
     xhr.sendGET('https://api.themoviedb.org/3/discover/movie', {api_key: '900a059c721165f24d2eea4b58490e05', primary_release_year: "2018", sort_by: 'vote_average.desc'})
         .then(
             function(result) {
-                console.log(result);
+                output.textContent = result;
             },
             function(error) {
-                console.log('Error ' + error.code);
+                output.textContent = error;
             }
         );
 

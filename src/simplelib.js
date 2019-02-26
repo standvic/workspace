@@ -96,6 +96,7 @@
         function ClickableContainer(params) {
             Container.apply(this,arguments);
             this._containerDiv.onclick = params.clickListener || this.clickListener.bind(this);
+            this._containerDiv.title = 'Click me';
         }
 
 

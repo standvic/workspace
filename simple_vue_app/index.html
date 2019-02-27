@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Vue Post Reader</title>
+    </head>
+
+    <body>
+        <div id="app">
+            <static-posts />
+        </div>
+
+        <template id="static-posts-template">
+            <div>
+                <h1>Here are the post titles:</h1>
+                <ul>
+                    <li v-for="post in posts">
+                        {{post.title}}
+                    </li>
+                </ul>
+            </div>
+        </template>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>

@@ -1,34 +1,68 @@
 
-Vue.component('static-posts', {
+const baseUrl = "http://jsonplaceholder.typicode.com";
 
-    template: '#static-posts-template',
-
+const List = {
+    template: '#list-template',
     data: () => ({
-        posts: []
+        posts: [],
+        search: ""
     }),
-
     mounted() {
         this.getPosts();
     },
-
     methods: {
-
         getPosts() {
-            this.posts = [
-                {
-                    "title": "The first post title!"
-                },
-                {
-                    "title": "The second post title!"
-                },
-                {
-                    "title": "The third post title!"
-                }
-            ];
+            axios.get(baseUrl + `/posts`).then(response => {
+                this.posts = response.data;
+                console.log(this.posts);
+            }).catch(error => {
+                console.log(error);
+            })
+        }
+    },
+    computed: {
+        filteredPosts() {
+            return this.posts.filter(post => {
+                return post.title.includes(this.search);
+            })
         }
     }
+};
+
+const Post = {
+    template: '#post-template',
+    data: () => ({
+        post: null
+    }),
+    mounted() {
+        this.getPosts();
+    },
+    methods: {
+        getPosts() {
+            var id = this.$route.params.id;
+            axios.get(baseUrl + `/posts/` + id).then(response => {
+                this.post = response.data
+                console.log(this.post);
+            }).catch(error => {
+                console.log(error);
+            })
+        }
+    }
+};
+
+const router = new VueRouter({
+    mode: 'history',
+    routes: [
+        {
+            name: 'homepage',
+            path: '/',
+            component: List
+        }, {
+            name: 'post',
+            path: '/:id',
+            component: Post
+        }
+    ]
 });
 
-new Vue({
-    el: '#app'
-});
+const app = new Vue({router}).$mount('#app');

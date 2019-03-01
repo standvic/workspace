@@ -69,7 +69,7 @@
     var xhr = new XHRC.RESTClient(),
         output = document.querySelector("#request-result");
 
-/*    xhr.sendGET('https://jsonplaceholder.typicode.com/todos/1', {a:1, b:2, c:'234', d:true, e:'qwerty'})
+/*    xhr.get('https://jsonplaceholder.typicode.com/todos/1', {a:1, b:2, c:'234', d:true, e:'qwerty'})
         .then(
             function(result) {
                 console.log(result);
@@ -78,7 +78,7 @@
                 console.log('Error ' + error.code);
             }
         );*/
-/*    xhr.sendPOST('https://jsonplaceholder.typicode.com/posts', {a:1, b:2, c:'234', d:true, e:'ыпыпыавп'})
+/*    xhr.post('https://jsonplaceholder.typicode.com/posts', {a:1, b:2, c:'234', d:true, e:'ыпыпыавп'})
         .then(
             function(result) {
                 console.log(result);
@@ -87,7 +87,7 @@
                 console.log('Error ' + error.code);
             }
         );*/
-/*    xhr.sendGET('https://contextual.websearch.com/api/spelling/AutoComplete', {'text':'do'})
+/*    xhr.get('https://contextual.websearch.com/api/spelling/AutoComplete', {'text':'do'})
         .then(
             function(result) {
                 console.log(result);
@@ -96,7 +96,7 @@
                 console.log('Error ' + error.code);
             }
         );*/
-    xhr.sendGET('https://api.themoviedb.org/3/discover/movie', {api_key: '900a059c721165f24d2eea4b58490e05', primary_release_year: "2018", sort_by: 'vote_average.desc'})
+    xhr.get('https://api.themoviedb.org/3/discover/movie', {api_key: '900a059c721165f24d2eea4b58490e05', primary_release_year: "2018", sort_by: 'vote_average.desc'})
         .then(
             function(result) {
                 output.textContent = result;
@@ -106,7 +106,7 @@
             }
         );
 
-    /*xhr.sendGET('https://api.themoviedb.org/3/search/movie', {api_key: '900a059c721165f24d2eea4b58490e05', query:/w+/, year:2018, page: 1})
+    /*xhr.get('https://api.themoviedb.org/3/search/movie', {api_key: '900a059c721165f24d2eea4b58490e05', query:/w+/, year:2018, page: 1})
         .then(
             function(result) {o
                 console.log(result);

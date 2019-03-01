@@ -61,7 +61,7 @@ XHRC.RESTClient.prototype = {
  * @return {Promise}
  *
  */
-    sendGET: function(url, requestParams, userName, password) {
+    get: function(url, requestParams, userName, password) {
         var _url,
             params = '',
             _xhro = this._xhrObject;
@@ -105,7 +105,7 @@ XHRC.RESTClient.prototype = {
  * @return {Promise}
  *
  */
-    sendPOST: function(url, requestParams, userName, password) {
+    post: function(url, requestParams, userName, password) {
         var _url,
             params = '',
             self = this,

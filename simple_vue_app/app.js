@@ -1,5 +1,5 @@
 
-const baseUrl = "http://jsonplaceholder.typicode.com";
+const baseUrl = "https://jsonplaceholder.typicode.com";
 
 const List = {
     template: '#list-template',
@@ -41,7 +41,7 @@ const Post = {
         getPosts() {
             var id = this.$route.params.id;
             axios.get(baseUrl + `/posts/` + id).then(response => {
-                this.post = response.data
+                this.post = response.data;
                 console.log(this.post);
             }).catch(error => {
                 console.log(error);
@@ -66,4 +66,4 @@ const router = new VueRouter({
 });
 
 const app = new Vue({router}).$mount('#app');
-router.push('/')
+router.push('/');

@@ -2,13 +2,59 @@
 
     <head>
         <title>Vue Post Reader</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     </head>
 
     <body>
 
-        <div id="app">
-            <router-view />
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+            <a class="navbar-brand" href="workspace/index.html">
+                <img src="https://img.icons8.com/office/48/000000/js.png" border="0">
+                Frontend workspace
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="workspace/index.html">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="workspace/simplelib.html">SimpleLib</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="workspace/xhrc.html">XHRC</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="simple_vue_app/index.html">SimpleVueApp</a>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 _text-center">
+                <h1 class="mt-5">Vue Application</h1>
+                <p class="lead">Simple Vue application test page</p>
+                <div id="app">
+                    <router-view />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div style="position: relative; top: 50px; left: 50px">
+        &copy standvic 2019
+    </div>
 
         <template id="list-template">
             <div>
@@ -32,6 +78,7 @@
             </div>
         </template>
 
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.5.3/vue-router.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.1/axios.js"></script>
